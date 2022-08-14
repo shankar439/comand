@@ -1,0 +1,19 @@
+
+/////////////////  basic commmand for killing port  /////////////////
+
+sudo - command to ask admin privilege(user id and password).
+kill - command to kill the process
+-9 - forcefully
+PID - process identification number that you want to kill
+
+sudo kill -9 30
+
+
+///////////////  killing s specific port  //////////////////////
+
+lsof - list of files(Also used for to list related processes)
+-t - show only process ID
+-i - show only internet connections related process
+:8000 - show only processes in this port number
+
+sudo kill -9 $(sudo lsof -t -i:8000)
