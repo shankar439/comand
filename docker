@@ -7,6 +7,10 @@ docker stop $(docker ps -a -q) #stop ALL containers
 docker rm -f $(docker ps -a -q) # remove ALL containers
 docker rm -f $(sudo docker ps --before="container_id_here" -q) # can also filter
 
+####  would exit with an error if docker ps will not find any containers. To suppress this error the user must use xargs: ###
+docker ps -aq | xargs --no-run-if-empty docker rm    (or)
+docker rm --no-run-if-empty $(docker ps -a -q)
+
 # exec into container
 docker exec -it $(docker container ls  | grep '<seach_term>' | awk '{print $1}') sh
 # exec into container on windows with Git Bash
